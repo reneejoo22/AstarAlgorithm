@@ -14,9 +14,9 @@ public:
 
 	Node(int a, pair<int, int> po);  // parent, position 생성자
 	double heuristic(const Node& node, const Node& goal, double D = 1.0, double D2 = std::sqrt(2.0));
-    vector<int> aStar(vector<int> map, int start, int end);
+   /* vector<int> aStar(vector<int> map, int start, int end);*/
 
-    bool operator==(const Node& other) const {
+    bool operator==(const Node& other) const {   // 파이썬에만 객체 같은지 아닌지 비교가 가능해서 따로 만들어야함
         if(position == other.position && parent == other.parent)
             return true;
         return false;
@@ -41,7 +41,7 @@ vector<int> aStar(vector<int> map, pair<int,int> start, pair<int, int> end) {
     vector<Node>openList;
     vector<Node>closedList;
 
-    openList[0] = startNode;
+    openList.push_back(startNode);
 
     while (!openList.empty()){
         Node currentNode = openList[0];
@@ -59,9 +59,9 @@ vector<int> aStar(vector<int> map, pair<int,int> start, pair<int, int> end) {
 
         if (currentNode == endNode) {
             vector<pair<int,int>>path;
-            vector<Node>current = currentNode;
-            while (current!= NULL) {
-                path.push_back(current.position);
+            Node current = currentNode; // 포인터로 참조
+            while (current!= nullptr) {
+                path.push_back(current->position);
             }
 
         }
@@ -69,7 +69,6 @@ vector<int> aStar(vector<int> map, pair<int,int> start, pair<int, int> end) {
 
     }
 }
-...쓰고 있는 중
 
 int main() {
 
@@ -94,3 +93,5 @@ int main() {
         path = aStar(maze, start, end)
         print("최단 경로:", path)
 }
+
+// http://14.52.220.185:100/fbsharing/FTz2C8Cl
