@@ -94,4 +94,19 @@ int main() {
         print("최단 경로:", path)
 }
 
-// http://14.52.220.185:100/fbsharing/FTz2C8Cl
+-----------
+
+
+
+        if (currentNode == endNode) {
+            // 경로 추적
+            vector<pair<int, int>> path;
+            int currentIndex = closedList.size() - 1; // 마지막 노드부터
+            while (currentIndex != -1) {
+                Node& current = closedList[currentIndex];
+                path.push_back(current.position);
+                currentIndex = current.parent;
+            }
+
+            return path;
+        }
