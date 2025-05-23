@@ -94,5 +94,3 @@ int main() {
         path = aStar(maze, start, end)
         print("최단 경로:", path)
 }
-
-// http://14.52.220.185:100/fbsharing/FTz2C8Cl
